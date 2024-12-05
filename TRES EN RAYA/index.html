@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TRES EN RAYA</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet"/>
+</head>
+<body>
+    <div class="container">
+        <h1>¡TRES EN RAYA!</h1>
+        <div id="mode-selection">
+            <button onclick="setMode('human')">JUEGO 2 JUGADORES</button>
+            <button onclick="setMode('computer')">JUEGA CONTRA EL ORDENADOR</button>
+        </div>
+        <div id="difficulty-selection" class="hidden">
+            <button onclick="setDifficulty('easy')">FÁCIL</button>
+            <button onclick="setDifficulty('medium')">MEDIO</button>
+            <button onclick="setDifficulty('hard')">DIFÍCIL</button>
+        </div>
+        <div id="game-board">
+            <div class="row">
+                <div class="cell" data-row="0" data-col="0" onclick="makeMove(this, 0, 0)"></div>
+                <div class="cell" data-row="0" data-col="1" onclick="makeMove(this, 0, 1)"></div>
+                <div class="cell" data-row="0" data-col="2" onclick="makeMove(this, 0, 2)"></div>
+            </div>
+            <div class="row">
+                <div class="cell" data-row="1" data-col="0" onclick="makeMove(this, 1, 0)"></div>
+                <div class="cell" data-row="1" data-col="1" onclick="makeMove(this, 1, 1)"></div>
+                <div class="cell" data-row="1" data-col="2" onclick="makeMove(this, 1, 2)"></div>
+            </div>
+            <div class="row">
+                <div class="cell" data-row="2" data-col="0" onclick="makeMove(this, 2, 0)"></div>
+                <div class="cell" data-row="2" data-col="1" onclick="makeMove(this, 2, 1)"></div>
+                <div class="cell" data-row="2" data-col="2" onclick="makeMove(this, 2, 2)"></div>
+            </div>
+        </div>
+        <div id="winner-message" class="hidden"></div>
+        <button onclick="resetGame()">Reiniciar Juego</button>
+        <div class="scoreboard">
+            <p>Victorias X: <span id="x-wins">0</span></p>
+            <p>Victorias O: <span id="o-wins">0</span></p>
+        </div>
+    </div>
+
+    <audio id="x-sound" src="./sounds/botonX.mp3"></audio>
+    <audio id="o-sound" src="./sounds/boton0.mp3"></audio>
+
+    <button id="help-button" class="help-button" onclick="toggleHelpModal()"><img id="img" src="./img/help.png"></button>
+    <div id="help-modal" class="help-modal hidden">
+        <div class="modal-content">
+            <h2>Instrucciones:</h2>
+            <p>Este es un juego de tres en raya. El objetivo es alinear tres marcas en fila (horizontal, vertical o diagonal).</p>
+            <p>Selecciona el modo de juego y juega contra otro jugador o la computadora. Puedes elegir el nivel de dificultad de la computadora.</p>
+            <p>Presiona el botón "Reiniciar juego" para poder elegir si quieres jugar con un amigo o en un nivel distinto con el ordenador</p>
+            <button onclick="toggleHelpModal()">CERRAR</button>
+        </div>
+    </div>
+
+    <button type="button" id="playButton"><i class="fa-solid fa-play" ></i><img id="img" src="./img/play.png"></button>
+    <button type="button" id="stopButton"><i class="fa-solid fa-stop"></i><img id="img" src="img/pause.png"></button>
+    <button type="button" id="muteButton"><img id="img" src="img/mute.png"></button>
+    <button type="button" id="volumeUpButton"><img id="img" src="./img/volumeup.png"></button>
+    <button type="button" id="volumeDownButton"><img id="img" src="./img/volumedown.png"></button>
+
+    <div class="container">
+        <canvas id="canvas" width="600" height="600"></canvas>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.core.min.js" integrity="sha512-d00Brs/+XQUUaO0Y9Uo8Vw63o7kS6ZcLM2P++17kALrI8oihAfL4pl1jQObeRBgv06j7xG0GHOhudAW0BdrycA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/music.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
